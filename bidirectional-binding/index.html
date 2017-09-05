@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>bidirectional-binding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <input type='text' id='model-input'/>
+    <div id='show'></div>
+    <script type="text/javascript">
+        var obj = {}
+        Object.defineProperty(obj, 'value', {
+            set: function(v) {
+                document.getElementById('model-input').value = v
+                document.getElementById('show').innerHTML = v
+            },
+            get: function(v) {
+            }
+        })
+        document.getElementById('model-input').addEventListener('input', function(e){
+            obj.value = e.target.value
+        })
+    </script>
+</body>
+
+</html>
