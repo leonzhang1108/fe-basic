@@ -10,6 +10,7 @@
     <input q-event="value" ng-bind="value" type="text" id="input">
     <div q-event="text" ng-bind="value" id="el"></div>
     <script>
+
         var elems = [document.getElementById('el'), document.getElementById('input')];
         var data = {
             value: 'hello!'
@@ -28,6 +29,7 @@
              */
             for (var i = 0, len = elems.length; i < len; i++) {
                 var elem = elems[i];
+                // 绑定一个默认值 以便更改后脏检测
                 elem.command = {};
                 for (var j = 0, len1 = elem.attributes.length; j < len1; j++) {
                     var attr = elem.attributes[j];
@@ -35,6 +37,7 @@
                         /**
                          * 调用属性指令
                          */
+                         
                         var dataKey = elem.getAttribute('ng-bind') || undefined;
                         /**
                          * 进行数据初始化
@@ -100,7 +103,7 @@
             }, false);
         }
         setTimeout(function () {
-            data.value = 'fuck';
+            data.value = 'this is the dirtycheck demo';
             /**
              * 这里问啥还要执行$digest这里关键的是需要手动调用$digest方法来启动脏检测
              */
