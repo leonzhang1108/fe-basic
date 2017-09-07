@@ -13,6 +13,8 @@
   </div>
 
   <script>
+
+    //观察者
     function observe(obj, vm) {
       Object.keys(obj).forEach(function (key) {
         defineReactive(vm, key, obj[key]);
@@ -34,6 +36,7 @@
         }
       });
     }
+
     function nodeToFragment(node, vm) {
       var flag = document.createDocumentFragment();
       var child;
@@ -72,6 +75,8 @@
         }
       }
     }
+
+    // 监听器
     function Watcher(vm, node, name, nodeType) {
       Dep.target = this;
       this.name = name;
@@ -96,6 +101,8 @@
         this.value = this.vm[this.name]; // 触发相应属性的get
       }
     }
+
+    // dependency
     function Dep() {
       this.subs = []
     }
@@ -121,7 +128,7 @@
     var vm = new Vue({
       el: 'app',
       data: {
-        text: 'this is the simple vue demo'
+        text: 'simple vue demo'
       }
     });
   </script>

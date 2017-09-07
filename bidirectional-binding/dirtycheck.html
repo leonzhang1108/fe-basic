@@ -10,8 +10,8 @@
     <input q-event="value" ng-bind="value" type="text" id="input">
     <div q-event="text" ng-bind="value" id="el"></div>
     <script>
-
         var elems = [document.getElementById('el'), document.getElementById('input')];
+        // 定义数据
         var data = {
             value: 'hello!'
         };
@@ -37,7 +37,6 @@
                         /**
                          * 调用属性指令
                          */
-                         
                         var dataKey = elem.getAttribute('ng-bind') || undefined;
                         /**
                          * 进行数据初始化

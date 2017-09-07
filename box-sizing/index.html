@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>box-sizing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body, html,
+        .left, .right {
+            height: 100%;
+        }
+        .left {
+            float: left;
+            width: 100px;
+            background: #ccc;
+        }
+        .right {
+            box-sizing: border-box;
+            margin-left: 100px;
+            border-left: 10px solid #fff;
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left"></div>
+    <div class="right"></div>
+</body>
+
+</html>
