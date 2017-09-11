@@ -12,10 +12,10 @@
   <button>click</button>
   <script type="text/javascript">
     var Utils = {
-      isFunction: function(f) {
+      isFunction: function (f) {
         return Object.prototype.toString.call(f) === '[object Function]'
-      }, 
-      isNumber: function(n) {
+      },
+      isNumber: function (n) {
         return typeof n === 'number'
       }
     }
@@ -31,11 +31,11 @@
         this.list.push(time)
       }
       deQueue() {
-        var curr = this.list.shift() || function() {}
-        if(Utils.isFunction(curr)) {
+        var curr = this.list.shift() || function () { }
+        if (Utils.isFunction(curr)) {
           curr.apply(this, arguments)
           this.list.length && this.deQueue()
-        } else if(Utils.isNumber(curr)) {
+        } else if (Utils.isNumber(curr)) {
           setTimeout(() => {
             this.deQueue()
           }, curr)
@@ -46,19 +46,19 @@
     var oBtn = document.querySelector('button')
     var oBox = document.querySelector('#box')
 
-    var create = (function() {
-       var count = 0
-       return function() {
-         var oLi = document.createElement('li')
-         oLi.innerHTML = count++
-         return oLi
-       }
+    var create = (function () {
+      var count = 0
+      return function () {
+        var oLi = document.createElement('li')
+        oLi.innerHTML = count++
+        return oLi
+      }
     })()
 
     oBtn.addEventListener('click', () => {
       var oQ = new Queue()
       function add() {
-        for(var i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
           oQ.enQueue(() => {
             oBox.appendChild(create())
           }).delay(1000)
@@ -67,7 +67,6 @@
       add()
       oQ.deQueue()
     })
-
   </script>
 </body>
 
