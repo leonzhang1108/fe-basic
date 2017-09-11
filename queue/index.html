@@ -33,12 +33,10 @@
       deQueue() {
         var curr = this.list.shift() || function () { }
         if (Utils.isFunction(curr)) {
-          curr.apply(this, arguments)
+          curr()
           this.list.length && this.deQueue()
         } else if (Utils.isNumber(curr)) {
-          setTimeout(() => {
-            this.deQueue()
-          }, curr)
+          setTimeout(() => this.deQueue(), curr)
         }
       }
     }
