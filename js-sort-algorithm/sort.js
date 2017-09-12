@@ -1,8 +1,8 @@
 // https://www.2cto.com/kf/201609/548586.html
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 // 冒泡排序
-function bubbleSort(arr) {
-  console.time('bubble')
+function bubbleSort (arr) {
+  console.time('bubble');
   var len = arr.length;
   for (var i = 0; i < len; i++) {
     for (var j = 0; j < len - 1 - i; j++) {
@@ -13,23 +13,24 @@ function bubbleSort(arr) {
       }
     }
   }
-  console.timeEnd('bubble')
+  console.timeEnd('bubble');
   return arr;
 }
 console.log(bubbleSort(arr));
 
 // 冒泡2
-function bubbleSort2(arr) {
-  console.time('bubble2')
-  var i = arr.length - 1;  //初始时,最后位置保持不变
+function bubbleSort2 (arr) {
+  console.time('bubble2');
+  var i = arr.length - 1; // 初始时,最后位置保持不变
   while (i > 0) {
-    var pos = 0; //每趟开始时,无记录交换
-    for (var j = 0; j < i; j++)
+    var pos = 0; // 每趟开始时,无记录交换
+    for (var j = 0; j < i; j++) {
       if (arr[j] > arr[j + 1]) {
-        pos = j; //记录交换的位置
+        pos = j; // 记录交换的位置
         var tmp = arr[j]; arr[j] = arr[j + 1]; arr[j + 1] = tmp;
       }
-    i = pos; //为下一趟排序作准备
+    }
+    i = pos; // 为下一趟排序作准备
   }
   console.timeEnd('bubble2');
   return arr;
@@ -37,15 +38,15 @@ function bubbleSort2(arr) {
 console.log(bubbleSort2(arr));
 
 // 选择排序
-function selectionSort(arr) {
+function selectionSort (arr) {
   var len = arr.length;
   var minIndex, temp;
   console.time('select sort');
   for (var i = 0; i < len - 1; i++) {
     minIndex = i;
     for (var j = i + 1; j < len; j++) {
-      if (arr[j] < arr[minIndex]) {     //寻找最小的数
-        minIndex = j;                 //将最小数的索引保存
+      if (arr[j] < arr[minIndex]) { // 寻找最小的数
+        minIndex = j; // 将最小数的索引保存
       }
     }
     temp = arr[i];
@@ -58,7 +59,7 @@ function selectionSort(arr) {
 console.log(selectionSort(arr));
 
 // 插入排序
-function insertionSort(array) {
+function insertionSort (array) {
   if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
     console.time('insert sort');
     for (var i = 1; i < array.length; i++) {
@@ -76,10 +77,10 @@ function insertionSort(array) {
     return 'array is not an Array!';
   }
 }
-console.log(insertionSort(arr))
+console.log(insertionSort(arr));
 
 // 二分插入
-function binaryInsertionSort(array) {
+function binaryInsertionSort (array) {
   if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
     console.time('binary insert sort');
     for (var i = 1; i < array.length; i++) {
@@ -103,15 +104,15 @@ function binaryInsertionSort(array) {
     return 'array is not an Array!';
   }
 }
-console.log(binaryInsertionSort(arr))
+console.log(binaryInsertionSort(arr));
 
 // 希尔排序
-function shellSort(arr) {
+function shellSort (arr) {
   var len = arr.length,
     temp,
     gap = 1;
   console.time('shell sort');
-  while (gap < len / 5) {          //动态定义间隔序列
+  while (gap < len / 5) { // 动态定义间隔序列
     gap = gap * 5 + 1;
   }
   for (gap; gap > 0; gap = Math.floor(gap / 5)) {
@@ -126,10 +127,10 @@ function shellSort(arr) {
   console.timeEnd('shell sort');
   return arr;
 }
-console.log(binaryInsertionSort(arr))
+console.log(binaryInsertionSort(arr));
 
 // 归并排序
-function mergeSort(arr) {  //采用自上而下的递归方法
+function mergeSort (arr) { // 采用自上而下的递归方法
   var len = arr.length;
   if (len < 2) {
     return arr;
@@ -139,7 +140,7 @@ function mergeSort(arr) {  //采用自上而下的递归方法
     right = arr.slice(middle);
   return merge(mergeSort(left), mergeSort(right));
 }
-function merge(left, right) {
+function merge (left, right) {
   var result = [];
   console.time('merge sort');
   while (left.length && right.length) {
@@ -149,25 +150,23 @@ function merge(left, right) {
       result.push(right.shift());
     }
   }
-  while (left.length)
-    result.push(left.shift());
-  while (right.length)
-    result.push(right.shift());
+  while (left.length) { result.push(left.shift()); }
+  while (right.length) { result.push(right.shift()); }
   console.timeEnd('merge sort');
   return result;
 }
 console.log(mergeSort(arr));
 
 // 堆排序
-function heapSort(array) {
+function heapSort (array) {
   console.time('heap sort');
   if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
-    //建堆
+    // 建堆
     var heapSize = array.length, temp;
     for (var i = Math.floor(heapSize / 2) - 1; i >= 0; i--) {
       heapify(array, i, heapSize);
     }
-    //堆排序
+    // 堆排序
     for (var j = heapSize - 1; j >= 1; j--) {
       temp = array[0];
       array[0] = array[j];
@@ -180,11 +179,11 @@ function heapSort(array) {
     return 'array is not an Array!';
   }
 }
-/*方法说明：维护堆的性质
+/* 方法说明：维护堆的性质
 @param  arr 数组
 @param  x   数组下标
-@param  len 堆大小*/
-function heapify(arr, x, len) {
+@param  len 堆大小 */
+function heapify (arr, x, len) {
   if (Object.prototype.toString.call(arr).slice(8, -1) === 'Array' && typeof x === 'number') {
     var l = 2 * x + 1, r = 2 * x + 2, largest = x, temp;
     if (l < len && arr[l] > arr[largest]) {
@@ -206,7 +205,7 @@ function heapify(arr, x, len) {
 console.log(heapSort(arr));
 
 // 计数排序
-function countingSort(array) {
+function countingSort (array) {
   var len = array.length,
     B = [],
     C = [],
@@ -227,13 +226,13 @@ function countingSort(array) {
   console.timeEnd('counting sort');
   return B;
 }
-console.log(countingSort(arr))
+console.log(countingSort(arr));
 
 // 桶排序
-/*方法说明：桶排序
+/* 方法说明：桶排序
 @param  array 数组
-@param  num   桶的数量*/
-function bucketSort(array, num) {
+@param  num   桶的数量 */
+function bucketSort (array, num) {
   if (array.length <= 1) {
     return array;
   }
@@ -247,14 +246,14 @@ function bucketSort(array, num) {
   space = (max - min + 1) / num;
   for (var j = 0; j < len; j++) {
     var index = Math.floor((array[j] - min) / space);
-    if (buckets[index]) {   //  非空桶，插入排序
+    if (buckets[index]) { //  非空桶，插入排序
       var k = buckets[index].length - 1;
       while (k >= 0 && buckets[index][k] > array[j]) {
         buckets[index][k + 1] = buckets[index][k];
         k--;
       }
       buckets[index][k + 1] = array[j];
-    } else {    //空桶，初始化
+    } else { // 空桶，初始化
       buckets[index] = [];
       buckets[index].push(array[j]);
     }
@@ -266,15 +265,15 @@ function bucketSort(array, num) {
   console.timeEnd('bucket sort');
   return result;
 }
-console.log(bucketSort(arr))
+console.log(bucketSort(arr));
 
 // 基数排序
-function radixSort(arr, maxDigit) {
+function radixSort (arr, maxDigit) {
   var mod = 10;
   var dev = 1;
   var counter = [];
   console.time('radix sort');
-  for (var i = 0; i < maxDigit; i++ , dev *= 10, mod *= 10) {
+  for (var i = 0; i < maxDigit; i++, dev *= 10, mod *= 10) {
     for (var j = 0; j < arr.length; j++) {
       var bucket = parseInt((arr[j] % mod) / dev);
       if (counter[bucket] == null) {
@@ -295,7 +294,7 @@ function radixSort(arr, maxDigit) {
   console.timeEnd('radix sort');
   return arr;
 }
-console.log(radixSort(arr))
+console.log(radixSort(arr));
 
 // 快速排序
 var quickSort = function (arr) {
@@ -315,4 +314,4 @@ var quickSort = function (arr) {
   console.timeEnd('quick sort');
   return quickSort(left).concat([pivot], quickSort(right));
 };
-console.log(quickSort(arr))
+console.log(quickSort(arr));
