@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>double-wings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .sub, .extra, .main {
+            height: 100px;
+        }
+        #main-wrap {
+            float: left;
+            width: 100%;
+        }
+
+        .sub {
+            float: left;
+            width: 190px;
+            margin-left: -100%;
+            background: aqua;
+        }
+
+        .extra {
+            float: left;
+            width: 230px;
+            margin-left: -230px;
+            background: yellow;
+        }
+
+        #main {
+            margin: 0 230px 0 190px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main-wrap" class="column">
+        <div id="main">#main</div>
+    </div>
+    <div class="sub"></div>
+    <div class="extra"></div>
+</body>
+
+</html>
